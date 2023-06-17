@@ -25,7 +25,7 @@ class Router {
 		self::$routes['POST'][$path] = $callable;
 	}
 
-	public function resolve(): ?Response {
+    public function resolve(): ?Response {
 		$path = $this->request->getPath();
 		$method = $this->request->method();
 		$callback = self::$routes[$method][$path] ?? false;

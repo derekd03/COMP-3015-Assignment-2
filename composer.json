@@ -4,10 +4,15 @@
         {
             "name": "Christian Fenn",
             "email": "christian_fenn@bcit.ca"
+        },
+        {
+            "name": "Derek D'Souza",
+            "email": "ddsouza4@my.bcit.ca"
         }
     ],
     "require": {
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.5"
     },
     "autoload": {
         "psr-4": {

@@ -4,7 +4,11 @@ namespace core;
 
 class Request {
 
-	private array $input = [];
+    // student-added authenticated boolean value
+    /**
+     * @var true
+     */
+    private array $input = [];
 
 	public function __construct() {
 		foreach ($this->isHttpPost() ? $_POST : $_GET as $key => $value) {
@@ -36,8 +40,8 @@ class Request {
 		return $position === false ? $path : substr($path, 0, $position);
 	}
 
-	public function input(string $key) {
-		return $this->input[$key] ?? null;
-	}
-
+    public function input(string $key)
+    {
+        return $this->input[$key] ?? ($_POST[$key] ?? $_GET[$key] ?? null);
+    }
 }
