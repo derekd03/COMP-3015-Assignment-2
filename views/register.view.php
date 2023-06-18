@@ -17,22 +17,22 @@ displayNav();
         <div class="mb-4">
             <label for="email" class="text-lg font-medium text-gray-700">Email:</label>
             <br>
-            <input type="text" name="email" class="mt-2 p-2 border border-gray-500 rounded w-full">
+            <input type="text" name="email" class="mt-2 p-2 border border-gray-500 rounded w-full" required>
         </div>
         <div class="mb-4">
             <label for="name" class="text-lg font-medium text-gray-700">Name:</label>
             <br>
-            <input type="text" name="name" class="mt-2 p-2 border border-gray-500 rounded w-full">
+            <input type="text" name="name" class="mt-2 p-2 border border-gray-500 rounded w-full" required>
         </div>
         <div class="mb-4">
             <label for="password" class="text-lg font-medium text-gray-700">Create Password:</label>
             <br>
-            <input type="password" name="password" class="mt-2 p-2 border border-gray-300 rounded w-full">
+            <input type="password" name="password" class="mt-2 p-2 border border-gray-300 rounded w-full" required>
         </div>
         <div class="mb-4">
             <label for="repeatPassword" class="text-lg font-medium text-gray-700">Repeat Password:</label>
             <br>
-            <input type="password" name="repeatPassword" class="mt-2 p-2 border border-gray-300 rounded w-full">
+            <input type="password" name="repeatPassword" class="mt-2 p-2 border border-gray-300 rounded w-full" required>
         </div>
         <input type="submit" value="Submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
     </form>

@@ -32,6 +32,8 @@ function active($page): bool {
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
+                        <img src="<?=__DIR__."public/images/".$_SESSION['pfp']?>" alt="avatar" style="border-radius: 50%; height: 30px; color: white">
+                        <?php echo '<span style="color: white;">'.$_SESSION['name'].':'.'</span>'?>
                         <a class="
                             <?php
                         echo active('login.view.php') ?

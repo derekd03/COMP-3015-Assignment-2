@@ -21,12 +21,12 @@ echo '<form method="POST" action="/create">';
 echo '<div class="mb-4">';
 echo '<label for="title" class="text-lg font-medium text-gray-700">Title:</label>';
 echo '<br>';
-echo '<input type="text" name="title" class="mt-2 p-2 border border-gray-500 rounded w-full">';
+echo '<input type="text" name="title" class="mt-2 p-2 border border-gray-500 rounded w-full" required>';
 echo '</div>';
 echo '<div class="mb-4">';
 echo '<label for="url" class="text-lg font-medium text-gray-700">URL:</label>';
 echo '<br>';
-echo '<input type="text" name="url" class="mt-2 p-2 border border-gray-300 rounded w-full">';
+echo '<input type="text" name="url" class="mt-2 p-2 border border-gray-300 rounded w-full" required>';
 echo '</div>';
 
 // display error message if there is one

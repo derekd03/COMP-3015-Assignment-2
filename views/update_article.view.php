@@ -1,6 +1,6 @@
 <?php
 
-use src\Repositories\ArticleRepository;
+use src\Repositories\ArticleRepository as ArticleRepository;
 use src\Repositories\UserRepository;
 
 include('header.php');
@@ -10,6 +10,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $articleId = $articleId ?? '';
+$articleRepository = new ArticleRepository();
+
+$articleTitle = $articleRepository->getArticleById($articleId)->title;
+$articleUrl = $articleRepository->getArticleById($articleId)->url;
 
 // display the article fields or error message if not submitted
 echo '<body>';
@@ -18,18 +22,19 @@ echo '<h2 class="text-xl text-center font-semibold text-indigo-700 mt-10 mb-10">
 
 displayError();
 
+// display current article fields in the form too
 echo '<div class="max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg">';
 echo '<form method="POST" action="edit">';
 echo '<input type="hidden" name="id" value="' . intval($articleId) . '">';
 echo '<div class="mb-4">';
 echo '<label for="title" class="text-lg font-medium text-gray-700">Title:</label>';
 echo '<br>';
-echo '<input type="text" name="title" class="mt-2 p-2 border border-gray-500 rounded w-full">';
+echo '<input type="text" name="title" value='. $articleTitle .' class="mt-2 p-2 border border-gray-500 rounded w-full">';
 echo '</div>';
 echo '<div class="mb-4">';
 echo '<label for="url" class="text-lg font-medium text-gray-700">URL:</label>';
 echo '<br>';
-echo '<input type="text" name="url" class="mt-2 p-2 border border-gray-300 rounded w-full">';
+echo '<input type="text" name="url"  value='. $articleUrl .' class="mt-2 p-2 border border-gray-300 rounded w-full">';
 echo '</div>';
 
 // display error message if there is one

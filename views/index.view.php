@@ -1,10 +1,14 @@
 <?php
 use src\Repositories\ArticleRepository;
+use src\Repositories\UserRepository;
 
 include('header.php');
 displayNav();
 
 $articles = (new ArticleRepository())->getAllArticles();
+$filename = "/public/images/default.jpg";
+
+$userRepository = (new UserRepository());
 
 ?>
 
@@ -31,7 +35,7 @@ $articles = (new ArticleRepository())->getAllArticles();
                                                 <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 013 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd"/>
                                                 </svg>
-                                                <p>Created at <time datetime="2020-01-07"><?= $article->createdAtFmt() ?></time></p>
+                                                <p>Created at <time datetime="2020-01-07"><?= $article->createdAtFmt() ?></time>, By: <?php echo $userRepository->getUserById($article->author_id)->name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -40,9 +44,10 @@ $articles = (new ArticleRepository())->getAllArticles();
                         </a>
                     </div>
                     <div class="inline-block float-right mt-8 mr-4">
+                        <img src="<?=__DIR__."public/images/".$userRepository->getUserById($article->author_id)->profile_picture?>" alt="avatar" style="border-radius: 50%; height: 30px; color: black">
                         <?php
                         // display edit or delete icons if the user is the author of the article
-                        if (canEditOrDeleteArticle($article->id)) {
+                        if (isTheAuthorOf($article->id)) {
                             echo '<a href="edit?id=' . $article->id . '" class="inline-block">';
                             echo '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6">';
                             echo '<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>';

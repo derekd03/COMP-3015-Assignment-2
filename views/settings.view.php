@@ -14,21 +14,16 @@ echo '<h2 class="text-xl text-center font-semibold text-indigo-700 mt-10 mb-10">
 displayError();
 
 echo '<div class="max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg">';
-echo '<form method="POST">';
+echo '<form method="POST" enctype="multipart/form-data">';
 echo '<div class="mb-4">';
-echo '<label for="name" class="text-lg font-medium text-gray-700">Name:</label>';
+echo '<label for="name" class="text-lg font-medium text-gray-700">New Name:</label>';
 echo '<br>';
 echo '<input type="text" name="name" class="mt-2 p-2 border border-gray-500 rounded w-full">';
 echo '</div>';
 echo '<div class="mb-4">';
-echo '<label for="password" class="text-lg font-medium text-gray-700">New Password:</label>';
+echo '<label for="pfp" class="text-lg font-medium text-gray-700">Profile Picture:</label>';
 echo '<br>';
-echo '<input type="text" name="password" class="mt-2 p-2 border border-gray-300 rounded w-full">';
-echo '</div>';
-echo '<div class="mb-4">';
-echo '<label for="repeatPassword" class="text-lg font-medium text-gray-700">Repeat New Password:</label>';
-echo '<br>';
-echo '<input type="text" name="repeatPassword" class="mt-2 p-2 border border-gray-300 rounded w-full">';
+echo '<input type="file" name="pfp">';
 echo '</div>';
 echo '<input type="submit" value="Save" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">';
 echo '</form>';
