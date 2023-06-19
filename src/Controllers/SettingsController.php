@@ -41,7 +41,7 @@ class SettingsController extends Controller {
 
         $error = '';
 
-        // Get entered fields from request parameters
+        // get entered fields from request parameters
         $name = $request->input('name', '');
         $pfp = $_FILES['pfp'];
 
@@ -72,19 +72,18 @@ class SettingsController extends Controller {
 
         if (empty($error)) {
 
-            // Update the user in the database
-
+            // update the user in the database
             if($userRepository->updateUser($_SESSION['user_id'], $name, $originalFileName)) {
                 $_SESSION['name'] = $name;
                 $_SESSION['pfp'] = $originalFileName;
             }
 
         } else {
-            // Store the error in the session
+            // store the error in the session
             $_SESSION['error'] = $error;
         }
 
-        // Redirect to settings page on either success or failure
+        // redirect to settings page on either success or failure
         header('Location: /settings');
         exit();
     }
