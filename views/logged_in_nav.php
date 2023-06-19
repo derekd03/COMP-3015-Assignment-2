@@ -1,10 +1,13 @@
 <?php
+
+use src\Repositories\UserRepository;
+
 function active($page): bool {
     $pageFromUri = explode('/', $_SERVER['SCRIPT_NAME']);
     return $page === end($pageFromUri);
 }
 
-$user = (new \src\Repositories\UserRepository)->getUserById($_SESSION['user_id']);
+$user = (new UserRepository)->getUserById($_SESSION['user_id']);
 
 ?>
 

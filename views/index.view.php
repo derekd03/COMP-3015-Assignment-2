@@ -6,7 +6,6 @@ include('header.php');
 displayNav();
 
 $articles = (new ArticleRepository())->getAllArticles();
-
 $userRepository = (new UserRepository());
 
 ?>

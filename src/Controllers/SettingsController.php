@@ -52,7 +52,7 @@ class SettingsController extends Controller {
         }
 
         // store the current user's pfp as a placeholder
-        $originalFileName = $_SESSION['pfp'];
+        $originalFileName = $userRepository->getUserByEmail($_SESSION['email'])->profile_picture;
 
         if($pfp['error'] !== UPLOAD_ERR_NO_FILE) {
 
