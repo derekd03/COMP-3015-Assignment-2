@@ -63,11 +63,8 @@ function isTheAuthorOf($articleId): bool {
 // checks if an image url is valid
 function isValidImage($url): bool {
 
-    if (getimagesize($url)) {
-        return true;
-    } else {
-        return false;
-    }
+    $imageInfo = @getimagesize($url);
+    return $imageInfo !== false;
 }
 
 // check if password is valid/strong

@@ -47,13 +47,6 @@ function active($page): bool {
                            href="/register">Register</a>
                         <a class="
                             <?php
-                        echo active('settings.view.php') ?
-                            'btn btn-primary hover:bg-opacity-75 hover:text-opacity-75 text-white' :
-                            'btn btn-secondary hover:bg-opacity-75 hover:text-opacity-75 text-white'
-                        ?>"
-                           href="/settings">Settings</a>
-                        <a class="
-                            <?php
                         echo active('index.view.php') ?
                             'btn btn-primary hover:bg-opacity-75 hover:text-opacity-75 text-white' :
                             'btn btn-secondary hover:bg-opacity-75 hover:text-opacity-75 text-white'

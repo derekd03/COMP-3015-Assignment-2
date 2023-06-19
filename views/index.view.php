@@ -6,7 +6,6 @@ include('header.php');
 displayNav();
 
 $articles = (new ArticleRepository())->getAllArticles();
-$filename = "/public/images/default.jpg";
 
 $userRepository = (new UserRepository());
 
@@ -44,7 +43,7 @@ $userRepository = (new UserRepository());
                         </a>
                     </div>
                     <div class="inline-block float-right mt-8 mr-4">
-                        <img src="<?=__DIR__."public/images/".$userRepository->getUserById($article->author_id)->profile_picture?>" alt="avatar" style="border-radius: 50%; height: 30px; color: black">
+                        <img src="<?= image($userRepository->getUserById($article->author_id)?->profile_picture) ?>" alt="" class="inline-block h-5 w-5 rounded-full ring-2 ring-white cover">
                         <?php
                         // display edit or delete icons if the user is the author of the article
                         if (isTheAuthorOf($article->id)) {

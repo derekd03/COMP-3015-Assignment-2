@@ -12,6 +12,7 @@ use src\Repositories\UserRepository;
 class ArticleController extends Controller {
 
     private ArticleRepository $articleRepository;
+    private UserRepository $userRepository;
 
     public function __construct() {
         $this->articleRepository = new ArticleRepository();

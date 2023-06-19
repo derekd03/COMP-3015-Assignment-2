@@ -4,6 +4,8 @@ function active($page): bool {
     return $page === end($pageFromUri);
 }
 
+$user = (new \src\Repositories\UserRepository)->getUserById($_SESSION['user_id']);
+
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -32,7 +34,7 @@ function active($page): bool {
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <img src="<?=__DIR__."public/images/".$_SESSION['pfp']?>" alt="avatar" style="border-radius: 50%; height: 30px; color: white">
+                        <img src="<?= image($user?->profile_picture) ?>" alt="" class="inline-block h-5 w-5 rounded-full ring-2 ring-white cover">
                         <?php echo '<span style="color: white;">'.$_SESSION['name'].':'.'</span>'?>
                         <a class="
                             <?php

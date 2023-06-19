@@ -37,10 +37,10 @@ class LoginController extends Controller {
         $error = '';
 
         // create a user instance
-        $user = new User;
+        $user = $userRepository->getUserByEmail($email);
 
         // check if the user exists in the database by email
-        if($userRepository->getUserByEmail($email)) {
+        if($user) {
 
             // get the hash password
             $hash = $user->password_digest;

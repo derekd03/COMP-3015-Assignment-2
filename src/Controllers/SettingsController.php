@@ -23,6 +23,10 @@ class SettingsController extends Controller {
         {
             $this->render('settings');
         }
+        else
+        {
+            header('Location: /login');
+        }
 	}
 
 	/**
@@ -39,22 +43,31 @@ class SettingsController extends Controller {
 
         // Get entered fields from request parameters
         $name = $request->input('name', '');
-        $pfp = $request->input('pfp', '');
+        $pfp = $_FILES['pfp'];
 
-        $originalFileName = '';
+        // if no new name and pfp were entered, just do nothing
+        if(empty($name) && $pfp['error'] === UPLOAD_ERR_NO_FILE) {
+            header('Location: /settings');
+            exit();
+        }
 
-        if(!empty($pfp)) {
+        // store the current user's pfp as a placeholder
+        $originalFileName = $_SESSION['pfp'];
 
-            // define the file
-            $file = $_FILES[$pfp];
-            // get the temporary file location
-            $tempPath = $file['tmp_name'];
-            // get the pfp file name
-            $originalFileName = $file['name'];
-            // move file from the temporary to destination location
-            move_uploaded_file($tempPath, __DIR__."public/images/$originalFileName");
-            // check if the pfp url entered is a valid image
-            isValidImage(__DIR__."public/images/$originalFileName") ? $error = 'File is not a valid image': '';
+        if($pfp['error'] !== UPLOAD_ERR_NO_FILE) {
+
+            // get the temporary pfp location
+            $temporaryPath = $pfp['tmp_name'];
+
+            if (!isValidImage($temporaryPath)) {
+                $error = 'File is not a valid image';
+            } else {
+                // get the pfp name
+                $originalFileName = $pfp['name'];
+                // move the pfp from the temporary to the destination location
+                $destinationPath = realpath('images') . DIRECTORY_SEPARATOR . $originalFileName;
+                move_uploaded_file($temporaryPath, $destinationPath);
+            }
         }
 
         if (empty($error)) {
